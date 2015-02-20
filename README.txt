@@ -1,0 +1,1 @@
+Visor general de imágenes.
