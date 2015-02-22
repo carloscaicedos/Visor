@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -20,35 +20,256 @@
             left: 100px;
             width: 700px;
             height: 600px;
-            border: 2px solid red;
+            border: 5px solid #7097be;
         }
         
-        .container{
-            position: relative;
-            width: 50%;
-            height: 50%;
-            border: 2px solid blue;
-        }
-        .child{
+        .viewer {
+            font-family: Helvetica;
             position: absolute;
-            left: 25%;
-            background: rgba(255, 0, 0, 0.4);
-            width: 50%;
-            height: 50%;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 5px;
+            border: 2px solid red;
+            box-sizing: border-box;
+        }
+        
+        .mainPanel {
+            position: relative;
+            display: flex;
+            display: -webkit-flex;
+            width: 100%;
+            height: 100%;
+            background: #ccc;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+        
+        .sidebar {
+            position: relative;
+/*            flex: 1;*/
+/*            display: inline-block;*/
+            box-sizing: border-box;
+/*            float: left;*/
+            width: 200px;
+            height: 100%;
+            background: #888;
+            border-left: none;
+        }
+        
+        .thumbnails {
+            position: relative;
+            box-sizing: border-box;
+            display: inline-block;
+            float: right;
+            width: 85%;
+            width: 170px;
+            height: 100%;
+            padding: 5px;
+            overflow: auto;
+            border: 2px solid #333;
+            border-left: none;
+            background: #eee;
+        }
+        
+        .thumbnail {
+            width: 80%;
+            padding: 10px;
+            margin: 10px auto;
+            box-sizing: border-box;
+        }
+        
+        .thumbnail:hover {
+            background: #9ccdff;
+        }
+        
+        .thumbnail img {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            box-shadow: 5px 5px 5px #888;
+            display: block;
+        }
+        
+        .thumbnail .label {
+            font-size: 0.7em;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .thumbnail .label span {
+            padding: 5px 7px;
+            background: #666;
+            color: #fff;
+            border-radius: 5px;
+        }
+        
+        .border {
+            position: relative;
+            box-sizing: border-box;
+            display: inline-block;
+            width: 15%;
+            width: 30px;
+            height: 100%;
+            border: 2px solid #333;
+            border-right: none;
+            background: #555;
+        }
+        
+        .index {
+            padding: 3px;
+            background: #bbb;
+        }
+        
+        .index.active {
+            background-color: #eee;
+        }
+        
+        .index img {
+            width: 100%;
+        }
+        
+        .doclist {
+            padding: 3px;
+            background: #bbb;
+        }
+        
+        .doclist.active {
+            background: #eee;
+        }
+        
+        .doclist img {
+            width: 100%;
+        }
+        
+        .centralPanel {
+            flex: 1;
+/*            padding-left: 200px;*/
+/*            width: auto;*/
+/*            height: 100%;*/
+            box-sizing: border-box;
+            border: 5px solid magenta;
+        }
+        
+        .content {
+            width: 10%;
+            border: 5px solid teal;
         }
     </style>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.index').click(function () {
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                } else {
+                    $('.doclist').removeClass('active');
+                    $(this).addClass('active');
+                }
+            });
+
+            $('.doclist').click(function () {
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                } else {
+                    $('.index').removeClass('active');
+                    $(this).addClass('active');
+                }
+
+                var leftPos = $('.sidebar').hasClass('hidden') ? 0 : 168;
+                
+                
+
+                $('.sidebar').animate({
+                    width: 30,
+//                    left: -leftPos
+                }, 300, function () {
+                    if ($('.sidebar').hasClass('hidden')) {
+                        $(this).removeClass('hidden');
+                    } else {
+                        $(this).addClass('hidden');
+                    }
+                });
+                $('.border').animate({
+                    left: leftPos
+                }, 300);
+            });
+        });
+    </script>
 </head>
 
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="frame">
-        <div class="container">
-            <div class="child"></div>
+        <div class="viewer">
+            <div class="mainPanel">
+                <div class="sidebar">
+                    <div class="thumbnails">
+                        <div class="thumbnail">
+                            <img src="imgs/page_1.png">
+                            <div class="label"><span>1</span>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="imgs/page_2.png">
+                            <div class="label"><span>2</span>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="imgs/page_3.png">
+                            <div class="label"><span>3</span>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="imgs/page_4.png">
+                            <div class="label"><span>4</span>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="imgs/page_5.png">
+                            <div class="label"><span>5</span>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="imgs/page_6.png">
+                            <div class="label"><span>6</span>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="imgs/page_7.png">
+                            <div class="label"><span>7</span>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="imgs/page_8.png">
+                            <div class="label"><span>8</span>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="imgs/page_9.png">
+                            <div class="label"><span>9</span>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <img src="imgs/page_10.png">
+                            <div class="label"><span>10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border">
+                        <div class="index">
+                            <img src="icons/index.png">
+                        </div>
+                        <div class="doclist active">
+                            <img src="icons/doclist.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="centralPanel">
+                    <div class="content">
+                        abcdefghijkl
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
