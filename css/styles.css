@@ -1,0 +1,132 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+.frame {
+    position: relative;
+    top: 50px;
+    left: 50px;
+    width: 900px;
+    height: 600px;
+    border: 5px solid #7097be;
+}
+
+.viewer {
+    font-family: Helvetica;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.mainPanel {
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+    box-sizing: border-box;
+    border: 2px solid #333;
+    overflow: auto;
+}
+
+.sidebar {
+    position: relative;
+    box-sizing: border-box;
+    width: 30px;
+    height: 100%;
+    background: #79b;
+}
+
+.tools {
+    padding: 3px;
+}
+
+.tools img {
+    width: 100%;
+}
+
+.tools.active {
+    background-color: #eee;
+}
+
+.thumbnails {
+    position: relative;
+    box-sizing: border-box;
+    width: 170px;
+    height: 100%;
+    background: #eee;
+    background: #fed;
+    padding: 0px;
+    overflow: auto;
+}
+
+.thumbpanel {
+    padding: 0px 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.thumbnail {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.thumbnail:hover {
+    background: #9ccdff;
+}
+
+.thumbnail img {
+    display: block;
+    width: 100%;
+    box-shadow: 5px 5px 5px #888;
+}
+
+.thumbnail .label {
+    font-size: 0.7em;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.thumbnail .label span {
+    padding: 5px 7px;
+    background: #666;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.pagePanel {
+    flex: 1;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    border-left: 2px solid #333;
+    overflow: auto;
+}
+
+.pages {
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: #ccc;
+    width: 100%;
+}
+
+.page {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 3px #555;
+    background: #fde;
+}
+
+.page svg {
+    display: block;
+}
