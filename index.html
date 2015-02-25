@@ -8,12 +8,10 @@
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript">
-        var scrollPos = 0;
+        var scale = 100;
 
         function clickOnThumbnail() {
             var idx = this.getAttribute('idx');
-
-            scrollPos = $('#page_' + idx)[0].offsetTop / $('.pagePanel')[0].scrollHeight;
 
             $('.pagePanel').animate({
                 scrollTop: $('#page_' + idx)[0].offsetTop
@@ -63,14 +61,16 @@
                     image[idx].setAttribute('height', this.height);
 
                     svg[idx].setAttribute('viewBox', '0 0 ' + this.width + ' ' + this.height);
+                    svg[idx].setAttribute('width', this.width);
+                    svg[idx].setAttribute('height', this.height);
                     svg[idx].appendChild(image[idx]);
 
-                    page[idx].className = 'page';
+                    page[idx].setAttribute('class', 'page');
                     page[idx].setAttribute('id', 'page_' + idx);
                     page[idx].appendChild(svg[idx]);
-
-                    $('.pages').append(page[idx]);
                 };
+
+                $('.pages').append(page[i - 1]);
 
                 imgTemp.setAttribute('idx', i - 1);
                 imgTemp.src = 'imgs/page_' + i + '.png';
@@ -78,7 +78,6 @@
         }
 
         function toggleThumbnails() {
-            scrollPos = $('.pagePanel')[0].scrollTop / $('.pagePanel')[0].scrollHeight;
             $('.thumbnails').toggle('blind', {
                 direction: 'left',
                 duration: 300
@@ -87,26 +86,26 @@
                     $('#btnDoclist').removeClass('active');
                 }
             });
+        }
 
-            $('.pagePanel').animate({
-                fakeAttr: 300
-            }, {
-                step: function (now, fx) {
-                    fx.elem.scrollTop = fx.elem.scrollHeight * scrollPos;
-                },
-                duration: 300
+        function zoom(value) {
+            $('.page svg').each(function (idx) {
+                $(this).css({
+                    width: $(this).width() * value / scale,
+                    height: $(this).height() * value / scale
+                });
             });
+
+            scale = value;
         }
 
         $(function () {
-
             $('#btnIndex').click(function () {
                 if ($(this).hasClass('active')) {
                     $(this).removeClass('active');
                 } else {
-
                     if ($('.thumbnails').is(':visible')) {
-                        hideThumbnails();
+                        toggleThumbnails();
                     }
 
                     $('.tools').removeClass('active');

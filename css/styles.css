@@ -11,7 +11,7 @@ body {
     position: relative;
     top: 50px;
     left: 50px;
-    width: 900px;
+    width: 800px;
     height: 600px;
     border: 5px solid #7097be;
 }
@@ -105,28 +105,29 @@ body {
 
 .pagePanel {
     flex: 1;
-    padding: 5px 15px;
+    text-align: center;
     box-sizing: border-box;
     border-left: 2px solid #333;
     overflow: auto;
 }
 
 .pages {
-    display: block;
-    margin: 0 auto;
-    box-sizing: border-box;
+    display: inline-block;
+    padding: 0px 15px;
+    text-align: center;
     background: #ccc;
-    width: 100%;
+    box-sizing: border-box;
 }
 
 .page {
-    margin: 0 auto;
-    margin-bottom: 20px;
+    display: block;
+    margin: 20px auto;
     box-sizing: border-box;
-    box-shadow: 5px 5px 3px #555;
-    background: #fde;
 }
 
 .page svg {
+    margin: 0 auto;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 3px #555;
     display: block;
 }
