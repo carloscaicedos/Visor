@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <title>Test Visor</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript">
-        var scale = 100;
+        var zoomScale = 100,
+            currentPage = 1;
 
         function clickOnThumbnail() {
             var idx = this.getAttribute('idx');
@@ -88,15 +90,36 @@
             });
         }
 
-        function zoom(value) {
+        function zoom(obj) {
+            var value;
+            var scrollPos = $('.pagePanel')[0].scrollTop / $('.pagePanel')[0].scrollHeight;
+            if ($(obj).hasClass('zoomOut')) {
+                value = (zoomScale == 50) ? 50 : zoomScale - 25;
+            } else {
+                value = (zoomScale == 250) ? 250 : zoomScale + 25;
+            }
+
+            console.log(value);
+
             $('.page svg').each(function (idx) {
-                $(this).css({
-                    width: $(this).width() * value / scale,
-                    height: $(this).height() * value / scale
-                });
+                $(this).animate({
+                    width: $(this).width() * value / zoomScale,
+                    height: $(this).height() * value / zoomScale
+                }, 300);
             });
 
-            scale = value;
+            $('.pagePanel').animate({
+                fakeAttr: 300
+            }, {
+                step: function (now, fx) {
+                    fx.elem.scrollTop = fx.elem.scrollHeight * scrollPos;
+                },
+                duration: 300
+            });
+
+            $('#zoom').html(value + '%');
+
+            zoomScale = value;
         }
 
         $(function () {
@@ -144,8 +167,34 @@
                 <div class="thumbnails">
                     <div class="thumbpanel"></div>
                 </div>
-                <div class="pagePanel">
-                    <div class="pages"></div>
+                <div class="docPanel">
+                    <div class="pagePanel">
+                        <div class="pages"></div>
+                    </div>
+                    <div class="statusBar">
+                        <div class="ctrlPage">
+                            <div class="btnPage prev">
+                                <img src="icons/leftarrow.png">
+                            </div>
+                            <div class="btnPage">
+                                <input type="text">
+                            </div>
+                            <div class="btnPage next">
+                                <img src="icons/rightarrow.png">
+                            </div>
+                        </div>
+                        <div class="ctrlZoom">
+                            <div class="btnZoom zoomOut" onclick="zoom(this)">
+                                <img src="icons/zoomOut.png">
+                            </div>
+                            <div class="btnZoom">
+                                <span id="zoom">100%</span>
+                            </div>
+                            <div class="btnZoom zoomIn" onclick="zoom(this)">
+                                <img src="icons/zoomIn.png">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

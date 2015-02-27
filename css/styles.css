@@ -9,9 +9,9 @@ body {
 
 .frame {
     position: relative;
-    top: 50px;
-    left: 50px;
-    width: 800px;
+    top: 10px;
+    left: 10px;
+    width: 1200px;
     height: 600px;
     border: 5px solid #7097be;
 }
@@ -29,10 +29,10 @@ body {
 .mainPanel {
     position: relative;
     display: flex;
-    display: -webkit-flex;
+    display: -ms-flexbox;
     width: 100%;
     height: 100%;
-    background: #ccc;
+    background: #aaa;
     box-sizing: border-box;
     border: 2px solid #333;
     overflow: auto;
@@ -103,19 +103,31 @@ body {
     border-radius: 5px;
 }
 
+.docPanel {
+    position: relative;
+    flex: 1;
+    -ms-flex: 1;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    display: flex;
+    display: -ms-flexbox;
+    overflow: auto;
+}
+
 .pagePanel {
     flex: 1;
+    -ms-flex: 1;
+    position: relative;
     text-align: center;
     box-sizing: border-box;
-    border-left: 2px solid #333;
     overflow: auto;
+    border-left: 2px solid #333;
 }
 
 .pages {
     display: inline-block;
     padding: 0px 15px;
     text-align: center;
-    background: #ccc;
     box-sizing: border-box;
 }
 
@@ -130,4 +142,111 @@ body {
     box-sizing: border-box;
     box-shadow: 5px 5px 3px #555;
     display: block;
+}
+
+.statusBar {
+    position: relative;
+    font-size: 12px;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    height: 40px;
+    background: #ccc;
+    box-sizing: border-box;
+    border-left: 2px solid #333;
+}
+
+.ctrlPage {
+    display: inline-block;
+    margin: 0;
+    height: 100%;
+    font-size: 0;
+    word-spacing: -1;
+    box-sizing: border-box;
+}
+
+.btnPage {
+    position: relative;
+    display: inline-table;
+    padding: 2px 2px;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+
+.btnPage input {
+    display: block;
+    height: 100%;
+    max-width: 80px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.btnPage.prev,
+.btnPage.next {
+    display: inline-block;
+    margin: 0;
+    width: 30px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.btnPage img {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.prev:hover,
+.next:hover {
+    border: 1px solid #777;
+}
+
+.prev:active,
+.next:active {
+    background-color: #ddd;
+}
+
+.ctrlZoom {
+    position: absolute;
+    display: table;
+    height: 100%;
+    top: 0;
+    right: 0;
+    padding: 4px 0;
+    margin-right: 5px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.btnZoom {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+}
+
+.btnZoom.zoomOut,
+.btnZoom.zoomIn {
+    width: 24px;
+}
+
+.btnZoom img {
+    padding: 0 3px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#zoom {
+    margin: 0 10px;
+}
+
+.btnZoom.zoomOut:hover,
+.btnZoom.zoomIn:hover {
+    cursor: default;
+    border-color: #777;
+}
+
+.btnZoom:active {
+    background: #ddd;
 }
