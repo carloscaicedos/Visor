@@ -1,72 +1,48 @@
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: auto;
-}
-
-.frame {
-    position: relative;
-    top: 10px;
-    left: 10px;
-    width: 1200px;
-    height: 600px;
-    border: 5px solid #7097be;
-}
-
-.viewer {
-    font-family: Helvetica;
+.viewerPanel {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 5px;
-    box-sizing: border-box;
-}
-
-.mainPanel {
-    position: relative;
     display: flex;
     display: -ms-flexbox;
+    font-family: Helvetica;
     width: 100%;
     height: 100%;
     background: #aaa;
     box-sizing: border-box;
-    border: 2px solid #333;
     overflow: auto;
 }
 
 .sidebar {
-    position: relative;
     box-sizing: border-box;
-    width: 30px;
     height: 100%;
     background: #79b;
 }
 
-.tools {
+.options {
+    float: left;
+    width: 30px;
+    box-sizing: border-box;
+}
+
+.option {
     padding: 3px;
 }
 
-.tools img {
+.option img {
     width: 100%;
 }
 
-.tools.active {
+.option.active {
     background-color: #eee;
 }
 
 .thumbnails {
-    position: relative;
-    box-sizing: border-box;
+    float: left;
     width: 170px;
     height: 100%;
-    background: #eee;
-    background: #fed;
     padding: 0px;
+    background: #eee;
+    box-sizing: border-box;
     overflow: auto;
+    /*    background: #fed;*/
 }
 
 .thumbpanel {
@@ -87,13 +63,13 @@ body {
 .thumbnail img {
     display: block;
     width: 100%;
-    box-shadow: 5px 5px 5px #888;
+    box-shadow: 3px 3px 3px #888;
 }
 
 .thumbnail .label {
     font-size: 0.7em;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .thumbnail .label span {
@@ -104,7 +80,6 @@ body {
 }
 
 .docPanel {
-    position: relative;
     flex: 1;
     -ms-flex: 1;
     flex-direction: column;
@@ -117,7 +92,6 @@ body {
 .pagePanel {
     flex: 1;
     -ms-flex: 1;
-    position: relative;
     text-align: center;
     box-sizing: border-box;
     overflow: auto;
@@ -145,48 +119,40 @@ body {
 }
 
 .statusBar {
-    position: relative;
-    font-size: 12px;
+    display: flex;
+    display: -ms-flexbox;
     margin: 0;
-    padding: 5px;
+    padding: 3px 0;
     text-align: center;
-    height: 40px;
+    height: 30px;
     background: #ccc;
     box-sizing: border-box;
     border-left: 2px solid #333;
 }
 
 .ctrlPage {
-    display: inline-block;
+    flex: 1;
+    -ms-flex: 1;
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: center;
+    -ms-flex-pack: center;
     margin: 0;
     height: 100%;
-    font-size: 0;
-    word-spacing: -1;
     box-sizing: border-box;
 }
 
 .btnPage {
-    position: relative;
-    display: inline-table;
-    padding: 2px 2px;
+    height: 100%;
+    box-sizing: border-box;
     border: 1px solid transparent;
-    box-sizing: border-box;
 }
 
-.btnPage input {
-    display: block;
-    height: 100%;
-    max-width: 80px;
+#currPage {
+    text-overflow: ellipsis;
     text-align: center;
-    box-sizing: border-box;
-}
-
-.btnPage.prev,
-.btnPage.next {
-    display: inline-block;
-    margin: 0;
-    width: 30px;
-    height: 100%;
+    max-width: 100px;
+    vertical-align: middle;
     box-sizing: border-box;
 }
 
@@ -201,52 +167,58 @@ body {
     border: 1px solid #777;
 }
 
-.prev:active,
-.next:active {
+.prev img:active,
+.next img:active {
     background-color: #ddd;
 }
 
 .ctrlZoom {
-    position: absolute;
-    display: table;
+    position: relative;
     height: 100%;
-    top: 0;
-    right: 0;
-    padding: 4px 0;
     margin-right: 5px;
     box-sizing: border-box;
-    vertical-align: middle;
 }
 
 .btnZoom {
-    display: table-cell;
-    vertical-align: middle;
+    float: left;
+    height: 100%;
     padding: 0;
     box-sizing: border-box;
     border: 1px solid transparent;
 }
 
-.btnZoom.zoomOut,
-.btnZoom.zoomIn {
-    width: 24px;
-}
-
 .btnZoom img {
-    padding: 0 3px;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
 }
 
-#zoom {
-    margin: 0 10px;
+.txtZoom {
+    display: table;
+    float: left;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid transparent;
 }
 
-.btnZoom.zoomOut:hover,
-.btnZoom.zoomIn:hover {
+#zoom {
+    display: table-cell;
+    vertical-align: middle;
+    min-width: 50px;
+    height: 100%;
+    font-size: 14px;
+    margin: 0 5px;
+    box-sizing: border-box;
+}
+
+.btnZoom:hover,
+.txtZoom:hover {
     cursor: default;
     border-color: #777;
 }
 
-.btnZoom:active {
+.btnZoom:active,
+.txtZoom:active {
     background: #ddd;
 }
