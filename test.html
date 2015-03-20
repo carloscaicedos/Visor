@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test Viewer</title>
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+            background: #333;
+        }
+        
+        .frame {
+            position: relative;
+            top: 10px;
+            left: 10px;
+            width: 800px;
+            height: 600px;
+            border: 5px solid #6eba7c;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/imgdocviewer.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/imgdocviewer.js"></script>
+    <script type="text/javascript">
+        var myViewer;
+        var imgsList = [{
+            urlImg: 'http://10.16.23.22/imgs/page_1.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_1.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_2.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_2.png',
+            width: 918,
+            height: 700,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_3.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_3.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_4.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_4.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_5.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_5.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_6.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_6.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_7.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_7.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_8.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_8.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_9.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_9.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_10.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_10.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }];
+        var imgsList2 = [{
+            urlImg: 'http://10.16.23.22/imgs/page_2.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_2.png',
+            width: 918,
+            height: 700,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_3.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_3.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_4.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_4.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_7.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_7.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_8.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_8.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_9.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_9.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }, {
+            urlImg: 'http://10.16.23.22/imgs/page_10.png',
+            urlThumb: 'http://10.16.23.22/imgs/page_10.png',
+            width: 700,
+            height: 918,
+            marks: []
+        }];
+
+        $(function () {
+            myViewer = new ImageViewer({
+                name: 'myViewer',
+                parent: '.frame',
+                imgslist: imgsList,
+                sidebar: false,
+                thumbnails: false,
+                bookmarks: false,
+                statusbar: true
+            });
+        });
+
+        function borrar() {
+            myViewer.destroy();
+            //myViewer.loadImages(imgsList2);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="frame"></div>
+    <br>
+    <input type="button" value="Borrar" onclick="borrar()">
+</body>
+
+</html>
